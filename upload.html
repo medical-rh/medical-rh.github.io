@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" style="margin-top: 40px;">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <form method="post" action="/upload">
+                <div class="form-group">
+                    <label for="name">产品名称</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="产品名称">
+                </div>
+                <div class="form-group">
+                    <label>产品类别</label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select class="form-control" id="firstClass" name="firstClass">
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control" id="secondClass" name="secondClass">
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control" id="thirdClass" name="thirdClass">
+                            </select>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="modal">型号</label>
+                    <input type="text" class="form-control" id="modal" name="modal" placeholder="产品型号">
+                </div>
+                <div class="form-group">
+                    <label for="brand">品牌</label>
+                    <input type="text" class="form-control" id="brand" name="brand" placeholder="产品品牌">
+                </div>
+                <div class="form-group">
+                    <label for="factory">厂家</label>
+                    <input type="text" class="form-control" id="factory" name="factory" placeholder="产品厂家">
+                </div>
+
+                <div class="form-group">
+                    <label for="remoteSrc">产品图片链接</label>
+                    <input type="text" class="form-control" id="remoteSrc" name="remoteSrc" placeholder="产品图片链接">
+                </div>
+
+                <div class="form-group">
+                    <label for="summary">产品简介</label>
+                    <input type="text" class="form-control" id="summary" name="summary" placeholder="产品简介">
+                </div>
+
+                <div class="form-group">
+                    <label for="details">产品详情</label>
+                    <textarea class="form-control" rows="8" id="details" name="details" placeholder="产品详情"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">上传产品</button>
+            </form>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+
+</div>
+</body>
+<script>
+    let first = 0, second = 0, third = 0;
+    let jsons=[{"id":1,"name":"影像设备","child":[{"id":9,"name":"医用X射线","child":[{"id":56,"name":"介入X射线成像设备","child":[]},{"id":57,"name":"诊断X射线成像设备","child":[]},{"id":58,"name":"乳腺X射线成像设备","child":[]}]},{"id":10,"name":"超声诊断成像","child":[{"id":59,"name":"台式彩超","child":[]},{"id":60,"name":"黑白超","child":[]},{"id":61,"name":"便携式超声","child":[]}]},{"id":11,"name":"多普勒血流","child":[{"id":62,"name":"多普勒血流测试仪","child":[]}]}]},{"id":2,"name":"临床检验及实验室","child":[{"id":12,"name":"检验设备","child":[{"id":63,"name":"生化分析仪","child":[]},{"id":64,"name":"血液分析仪","child":[]},{"id":65,"name":"电解质分析仪","child":[]},{"id":66,"name":"血气分析仪","child":[]},{"id":67,"name":"免疫分析仪","child":[]},{"id":68,"name":"PCR","child":[]},{"id":69,"name":"血流变分析仪","child":[]},{"id":70,"name":"采血设备与耗材","child":[]},{"id":71,"name":"其他血液设备","child":[]},{"id":72,"name":"尿液分析仪","child":[]},{"id":73,"name":"尿沉渣分析系统","child":[]},{"id":74,"name":"大便机","child":[]},{"id":75,"name":"加样、进样系统与超净装置","child":[]}]},{"id":13,"name":"病理分析设备","child":[{"id":76,"name":"切片机、组织脱水机、染色机","child":[]},{"id":77,"name":"包埋机、涂片机、制片机","child":[]},{"id":78,"name":"组织处理机","child":[]},{"id":79,"name":"病理图文报告系统","child":[]},{"id":80,"name":"病理实验室台柜","child":[]},{"id":81,"name":"液基细胞分析仪","child":[]}]},{"id":14,"name":"实验室设备","child":[{"id":82,"name":"培养箱","child":[]},{"id":83,"name":"生物安全柜","child":[]},{"id":84,"name":"离心机","child":[]},{"id":85,"name":"实验纯水系统","child":[]},{"id":86,"name":"酶标仪、洗板机","child":[]},{"id":87,"name":"医用冷藏冷冻箱","child":[]},{"id":88,"name":"显微镜","child":[]},{"id":89,"name":"其他实验室设备","child":[]}]},{"id":15,"name":"食品安全检测设备","child":[]}]},{"id":3,"name":"生命信息与支持","child":[{"id":16,"name":"手术室抢救设备","child":[{"id":90,"name":"呼吸机","child":[]},{"id":91,"name":"麻醉机","child":[]},{"id":92,"name":"除颤仪","child":[]},{"id":93,"name":"心肺复苏机","child":[]},{"id":94,"name":"其他","child":[]}]},{"id":17,"name":"心电及监护诊断仪器","child":[{"id":95,"name":"心电图机","child":[]},{"id":96,"name":"动态心电图机","child":[]},{"id":97,"name":"床边监护仪","child":[]},{"id":98,"name":"中央监护系统","child":[]},{"id":99,"name":"其他","child":[]}]},{"id":18,"name":"血氧、血压监测装置","child":[{"id":100,"name":"动态血压监护仪","child":[]},{"id":101,"name":"血氧饱和度检测仪","child":[]},{"id":102,"name":"其他","child":[]},{"id":103,"name":"血糖监测","child":[]}]},{"id":19,"name":"注射泵、输液泵、胰岛素泵等","child":[{"id":104,"name":"注射泵","child":[]},{"id":105,"name":"肠内营养泵","child":[]},{"id":106,"name":"胰岛素泵","child":[]},{"id":107,"name":"输液泵","child":[]},{"id":108,"name":"微量元素注射泵","child":[]},{"id":109,"name":"核磁输液泵","child":[]},{"id":110,"name":"其他","child":[]}]},{"id":20,"name":"手术室设备","child":[{"id":111,"name":"手术台","child":[]},{"id":112,"name":"吊桥、吊塔","child":[]},{"id":113,"name":"无影灯","child":[]},{"id":114,"name":"血滤设备","child":[]},{"id":115,"name":"透析设备","child":[]},{"id":116,"name":"其他","child":[]}]},{"id":21,"name":"高频手术和电凝设备","child":[{"id":117,"name":"高频电刀和双极电凝器","child":[]},{"id":118,"name":"高频治疗仪","child":[]},{"id":119,"name":"其他","child":[]}]},{"id":22,"name":"脑电、肌电、胃电诊断仪器","child":[{"id":120,"name":"脑电图机","child":[]},{"id":121,"name":"肌电图机","child":[]},{"id":122,"name":"胃肠电图仪","child":[]},{"id":123,"name":"其他","child":[]}]},{"id":23,"name":"生物电诊断仪器","child":[{"id":124,"name":"眼震电图仪","child":[]},{"id":125,"name":"诱发电位仪","child":[]},{"id":126,"name":"其他","child":[]}]},{"id":24,"name":"血流量、容量测定装置","child":[{"id":127,"name":"心排量监测仪","child":[]},{"id":128,"name":"心血管功能测试仪","child":[]},{"id":129,"name":"其他","child":[]}]},{"id":25,"name":"睡眠呼吸监测系统","child":[{"id":130,"name":"其他","child":[]}]},{"id":26,"name":"光谱诊断设备","child":[{"id":131,"name":"红外线乳腺诊断仪","child":[]},{"id":132,"name":"医用红外热像仪","child":[]},{"id":133,"name":"肿瘤激光诊断","child":[]},{"id":134,"name":"其他","child":[]}]},{"id":27,"name":"血糖监测","child":[]},{"id":135,"name":"内窥镜","child":[{"id":136,"name":"肾镜","child":[]}]}]},{"id":4,"name":"体检设备","child":[{"id":28,"name":"常用体检器械","child":[{"id":137,"name":"体温计","child":[]},{"id":138,"name":"血压计","child":[]},{"id":139,"name":"身高体重测量仪","child":[]},{"id":140,"name":"肺量计","child":[]},{"id":141,"name":"听诊器","child":[]},{"id":142,"name":"叩诊锤","child":[]}]},{"id":29,"name":"人体成分分析仪","child":[]},{"id":30,"name":"智能自助体检一体机","child":[]},{"id":31,"name":"超声骨密度仪","child":[]},{"id":32,"name":"听力筛查仪","child":[]},{"id":33,"name":"肺功能仪","child":[]},{"id":34,"name":"亚健康侦察设备","child":[{"id":143,"name":"精神压力分析仪","child":[]},{"id":144,"name":"动脉硬化检测装置","child":[]},{"id":145,"name":"糖尿病早期检测系统","child":[]},{"id":146,"name":"人体磁场感应分析","child":[]}]},{"id":35,"name":"其他体检设备","child":[]}]},{"id":5,"name":"五官科设备","child":[{"id":36,"name":"口腔综合治疗设备","child":[{"id":147,"name":"口腔综合治疗台","child":[]},{"id":148,"name":"口腔内科设备","child":[]},{"id":149,"name":"口腔外科设备","child":[]},{"id":150,"name":"口腔修复科设备","child":[]},{"id":151,"name":"口腔正畸科设备","child":[]}]},{"id":37,"name":"眼视光设备","child":[{"id":152,"name":"验光配镜","child":[]},{"id":153,"name":"镜片加工","child":[]},{"id":154,"name":"综合检眼台","child":[]},{"id":155,"name":"治疗设备","child":[]},{"id":156,"name":"激光设备","child":[]}]},{"id":38,"name":"耳鼻喉科诊察设备","child":[{"id":157,"name":"五官检查设备","child":[]},{"id":158,"name":"听力诊断设备","child":[]},{"id":159,"name":"五官治疗设备","child":[]}]},{"id":39,"name":"听力诊断仪器","child":[]},{"id":40,"name":"消毒设备","child":[]},{"id":41,"name":"耳鼻喉科综合治疗台","child":[]}]},{"id":6,"name":"康复及治疗设备","child":[{"id":42,"name":"常用物理治疗设备","child":[{"id":160,"name":"体外冲击波碎石机","child":[]},{"id":161,"name":"多导生理记录仪","child":[]},{"id":162,"name":"心脏电生理刺激仪","child":[]},{"id":163,"name":"眼电生理仪","child":[]},{"id":164,"name":"臭氧治疗仪","child":[]},{"id":165,"name":"骨创伤治疗仪","child":[]},{"id":166,"name":"二氧化碳激光治疗仪","child":[]},{"id":167,"name":"微波治疗仪","child":[]},{"id":168,"name":"生物反馈治疗仪","child":[]},{"id":193,"name":"空气波压力治疗仪","child":[]},{"id":194,"name":"干涉波疼痛治疗仪","child":[]},{"id":195,"name":"其他","child":[]}]},{"id":43,"name":"康复治疗及评估设备","child":[{"id":169,"name":"儿童专用康复训练设备","child":[]},{"id":170,"name":"康复训练辅助设备","child":[]},{"id":171,"name":"运动训练与矫正装置","child":[]},{"id":172,"name":"康复牵引设备","child":[]},{"id":173,"name":"眼科康复治疗仪器","child":[]},{"id":174,"name":"体外振动排痰机及排痰背心","child":[]},{"id":175,"name":"康复功能评估系统","child":[]}]},{"id":44,"name":"其他物理治疗设备","child":[{"id":176,"name":"电疗仪","child":[]},{"id":177,"name":"药物离子导入仪","child":[]},{"id":178,"name":"电化学治疗机","child":[]},{"id":179,"name":"高压氧舱","child":[]},{"id":180,"name":"光疗仪器","child":[]},{"id":181,"name":"磁疗仪器","child":[]},{"id":182,"name":"声疗仪器","child":[]},{"id":196,"name":"热疗仪器","child":[]},{"id":197,"name":"中药熏蒸治疗器","child":[]},{"id":198,"name":"等离子及低温治疗仪","child":[]},{"id":199,"name":"激光治疗设备","child":[]}]},{"id":45,"name":"医用美容治疗仪","child":[]},{"id":46,"name":"心理健康治疗","child":[]}]},{"id":7,"name":"妇科及儿科设备","child":[{"id":47,"name":"妇科诊察设备","child":[]},{"id":48,"name":"妇科治疗设备","child":[]},{"id":49,"name":"产科设备","child":[]},{"id":50,"name":"儿科设备","child":[{"id":183,"name":"胎儿多普勒超声仪","child":[]}]}]},{"id":8,"name":"基建配套","child":[{"id":51,"name":"灭菌设备","child":[{"id":184,"name":"辐射灭菌设备","child":[]},{"id":185,"name":"高压蒸汽灭菌设备","child":[]},{"id":186,"name":"干热灭菌设备","child":[]},{"id":187,"name":"气体灭菌设备","child":[]}]},{"id":52,"name":"清洗及消毒设备","child":[{"id":188,"name":"清洗设备","child":[]},{"id":189,"name":"空气净化消毒设备","child":[]},{"id":190,"name":"物体消毒设备","child":[]}]},{"id":53,"name":"包装材料","child":[{"id":191,"name":"灭菌包装材料","child":[]},{"id":192,"name":"封口设备","child":[]}]},{"id":54,"name":"制氧设备","child":[]},{"id":55,"name":"其他","child":[]}]}];
+    function updateSelect(jsons) {
+        for (let i = 0; i < jsons.length; i++) {
+            $("#firstClass").append("<option value='" + jsons[i].id + "'>" + jsons[i].name + "</option>")
+        }
+        $("#firstClass").change(function() {
+            $("#secondClass").empty();
+            first = $("#firstClass").get(0).selectedIndex;
+            if (jsons[first].child.length > 0) {
+                for (let j = 0; j < jsons[first].child.length; j++) {
+                    $("#secondClass").append("<option value='" + jsons[first].child[j].id + "'>" + jsons[first].child[j].name + "</option>")
+                }
+            };
+            $("#secondClass").change();
+        });
+        $("#secondClass").change(function() {
+            $("#thirdClass").empty();
+            second = $("#secondClass").get(0).selectedIndex;
+            if (jsons[first].child[second].child.length > 0) {
+                for (let k = 0; k < jsons[first].child[second].child.length; k++) {
+                    $("#thirdClass").append("<option value='" + jsons[first].child[second].child[k].id + "'>" + jsons[first].child[second].child[k].name + "</option>")
+                }
+            };
+        });
+        $("#firstClass").change();
+    };
+    updateSelect(jsons);
+</script>
+</html>
